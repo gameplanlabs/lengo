@@ -4,9 +4,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+// use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -20,8 +23,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'phone_number',
         'email',
         'password',
+        'userable_id',
+        'userable_type',
+        'profile_image_path',
+        'referral_code',
+        'last_login_at'
     ];
 
     /**
@@ -32,6 +41,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'last_login_at',
+        'profile_image_path'
     ];
 
     /**
@@ -44,6 +55,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'last_login_at' => 'datetime',
         ];
     }
 
@@ -56,5 +68,15 @@ class User extends Authenticatable
             ->explode(' ')
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
+    }
+
+    public function userable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function trackables(): HasMany
+    {
+        return $this->hasMany(Trackable::class);
     }
 }
