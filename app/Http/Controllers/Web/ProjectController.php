@@ -16,18 +16,11 @@ class ProjectController extends Controller
     /*
      * A list of all daily plans
      */
-    public function index(): \Inertia\Response
+    public function index()
     {
-        $projects = Trackable::query()
-            ->where('user_id', '=', Auth::id())
-            ->where('trackable_type', '=', Project::class)
-            ->with(['trackable', 'category', 'user', 'visibility'])
-            ->latest()
-            ->paginate(12);
 
-        return Inertia::render('Projects/Index', [
-            'projects' => $projects
-        ]);
+
+        return view('pages/projects');
     }
 
     /*

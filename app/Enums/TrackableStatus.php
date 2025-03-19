@@ -8,12 +8,12 @@ enum TrackableStatus: string
     case ACTIVE = 'active';
     case INPROGRESS = 'in-progress';
     case COMPLETED = 'completed';
+    case ACHIEVED = 'achieved';
     case PAUSED = 'paused';
     case CANCELLED = 'cancelled';
     case WORKING = 'working';
     case IDEATION = 'ideation';
     case INREVIEW = 'in-review';
-    case ACHIEVED = 'achieved';
     case ARCHIVED = 'archived';
 
     public static function getAvailableStatuses(): array
@@ -24,11 +24,11 @@ enum TrackableStatus: string
             self::INPROGRESS->value,
             self::WORKING->value,
             self::COMPLETED->value,
+            self::ACHIEVED->value,
             self::PAUSED->value,
             self::CANCELLED->value,
             self::IDEATION->value,
             self::INREVIEW->value,
-            self::ACHIEVED->value,
             self::ARCHIVED->value,
         ];
     }
