@@ -27,6 +27,22 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('projects', 'projects.index')->name('projects.index');
     Volt::route('projects/start', 'projects.create')->name('projects.create');
 
+    // tasks
+    Volt::route('tasks', 'tasks.index')->name('tasks.index');
+    Volt::route('tasks/start', 'tasks.create')->name('tasks.create');
+
+    // todos
+    Volt::route('todos', 'todos.index')->name('todos.index');
+    Volt::route('todos/start', 'todos.create')->name('todos.create');
+
+    // activities
+    Volt::route('activities', 'activities.index')->name('activities.index');
+    Volt::route('activities/start', 'activities.create')->name('activities.create');
+
+    // daily-plans
+    Volt::route('daily-plans', 'daily-plans.index')->name('daily-plans.index');
+    Volt::route('daily-plans/start', 'daily-plans.create')->name('daily-plans.create');
+
     // Route::get('/home', [DailyPlanController::class, 'index'])->name('home2');
     // // daily plans
     // Route::get('/daily-plans/create', [DailyPlanController::class, 'create'])->name('daily-plans.create');

@@ -15,6 +15,10 @@
                 <flux:navlist.group heading="Platform" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>Dashboard</flux:navlist.item>
                     <flux:navlist.item icon="document-text" :href="route('projects.index')" :current="request()->routeIs('projects.index')">Projects</flux:navlist.item>
+                    <flux:navlist.item icon="document-text" :href="route('tasks.index')" :current="request()->routeIs('tasks.index')">Tasks</flux:navlist.item>
+                    <flux:navlist.item icon="document-text" :href="route('todos.index')" :current="request()->routeIs('todos.index')">Todos</flux:navlist.item>
+                    <flux:navlist.item icon="document-text" :href="route('activities.index')" :current="request()->routeIs('activities.index')">Activities</flux:navlist.item>
+                    <flux:navlist.item icon="document-text" :href="route('daily-plans.index')" :current="request()->routeIs('daily-plans.index')">Daily Plans</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -28,6 +32,12 @@
                 <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits" target="_blank">
                     Documentation
                 </flux:navlist.item>
+                
+                <flux:radio.group x-data variant="segmented" x-model="$flux.appearance">
+                    <flux:radio value="light" icon="sun"></flux:radio>
+                    <flux:radio value="dark" icon="moon"></flux:radio>
+                    <flux:radio value="system" icon="computer-desktop"></flux:radio>
+                </flux:radio.group>
             </flux:navlist>
 
             <!-- Desktop User Menu -->
